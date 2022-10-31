@@ -1,4 +1,4 @@
-# Zero to JupyterHub with Kubernetes
+# Zero to JupyterHub with Openshift
 
 [![Documentation build status](https://img.shields.io/readthedocs/zero-to-jupyterhub?logo=read-the-docs)](https://zero-to-jupyterhub.readthedocs.io/en/latest/?badge=latest)
 [![GitHub Workflow Status - Test](https://img.shields.io/github/workflow/status/jupyterhub/zero-to-jupyterhub-k8s/Test%20chart?logo=github&label=tests)](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/actions)
@@ -12,9 +12,19 @@
 [![Gitter](https://img.shields.io/badge/social_chat-gitter-blue?logo=gitter)](https://gitter.im/jupyterhub/jupyterhub)
 [![Contribute](https://img.shields.io/badge/I_want_to_contribute!-grey?logo=jupyter)](https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/HEAD/CONTRIBUTING.md)
 
-This repo contains a _Helm chart_ for JupyterHub and a guide to use it. Together
-they allow you to make a JupyterHub available to a very large group of users
-such as the staff and students of a university.
+This repo is an adaption of zero-to-jupyterhub-k8s for installation on Red Hat OpenShift.
+
+As few changes as possible has been made.
+
+## Quick start
+To use the latest standard zero-to-jupyterhub-k8s Helm Chart, simply use the config.yaml value file from this repo:
+```
+helm install jupyterhub jupyterhub/jupyterhub --namespace zero-to-jupyterhub --version 2.0.0-beta.1.n006.hf1ae708d --values config.yaml
+```
+
+## Configuration changes
+* All runAsUser/runAsGroup/fsGroup has been removed to allow OpenShift using rootless containers
+* NetworkPolicy has been disabled
 
 ## The guide
 
